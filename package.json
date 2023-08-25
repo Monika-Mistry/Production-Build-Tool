@@ -18,9 +18,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run prebuild && rollup --bundleConfigAsCjs -c && cp public/index.html dist/",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "serve -s dist/",
+    "prebuild": "rm -rf dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +41,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.28",
+    "rollup": "^2.79.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "serve": "^14.2.1",
+    "tailwindcss": "^3.3.3"
   }
 }
